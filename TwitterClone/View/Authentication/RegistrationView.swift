@@ -14,17 +14,38 @@ struct RegistrationView: View {
     @State var email = ""
     @State var userName = ""
     @State var password = ""
+    @State var showImagePicker = false
+    @State var selectedUIImage: UIImage?
+    @State var image: Image?
     
     var body: some View {
         ZStack {
-//            Color(#colorLiteral(red: 0.1843137255, green: 0.631372549, blue: 0.9529411765, alpha: 1)).ignoresSafeArea()
             VStack {
-                Image("twitter")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 220, height: 100)
-                    .padding(.top, 80)
-                    .padding(.bottom, 40)
+                Button(action: { self.showImagePicker.toggle() }) {
+                    ZStack {
+                        if let image = image {
+                            image
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 140, height: 140)
+                                .clipped()
+                                .clipShape(Circle())
+                                .padding(.top, 80)
+                                .padding(.bottom, 16)
+                        } else {
+                            Image("plus_photo")
+                                .resizable()
+                                .renderingMode(.template)
+                                .scaledToFill()
+                                .frame(width: 140, height: 140)
+                                .padding(.top, 80)
+                                .padding(.bottom, 16)
+                                .foregroundColor(.white)
+                        }
+                    }
+                }.sheet(isPresented: $showImagePicker, onDismiss: loadImage) {
+                    ImagePicker(image: $selectedUIImage)
+                }
                 
                 VStack(spacing: 20) {
                     CustomTextFields(text: $fullName, placeholder: Text("Full Name"), image: "person")
@@ -77,6 +98,11 @@ struct RegistrationView: View {
             }
             .background(Color(#colorLiteral(red: 0.1843137255, green: 0.631372549, blue: 0.9529411765, alpha: 1))).ignoresSafeArea()
         }
+    }
+    
+    func loadImage() {
+        guard let selectedImage = selectedUIImage else { return }
+        image = Image(uiImage: selectedImage)
     }
 }
 

@@ -22,6 +22,7 @@
 		0445C67F268EF2490085D7A6 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0445C67E268EF2490085D7A6 /* RegistrationView.swift */; };
 		0445C681268EF53F0085D7A6 /* CustomTextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0445C680268EF53F0085D7A6 /* CustomTextFields.swift */; };
 		0445C683268EFC340085D7A6 /* CustomSecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0445C682268EFC340085D7A6 /* CustomSecureTextField.swift */; };
+		046143B326903FC900FD19F9 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046143B226903FC900FD19F9 /* ImagePicker.swift */; };
 		0468E18526789D5300C19EEF /* TwitterCloneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468E18426789D5300C19EEF /* TwitterCloneApp.swift */; };
 		0468E18726789D5300C19EEF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468E18626789D5300C19EEF /* ContentView.swift */; };
 		0468E18926789D5600C19EEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0468E18826789D5600C19EEF /* Assets.xcassets */; };
@@ -59,6 +60,7 @@
 		0445C67E268EF2490085D7A6 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		0445C680268EF53F0085D7A6 /* CustomTextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFields.swift; sourceTree = "<group>"; };
 		0445C682268EFC340085D7A6 /* CustomSecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureTextField.swift; sourceTree = "<group>"; };
+		046143B226903FC900FD19F9 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		0468E18126789D5300C19EEF /* TwitterClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0468E18426789D5300C19EEF /* TwitterCloneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterCloneApp.swift; sourceTree = "<group>"; };
 		0468E18626789D5300C19EEF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				04303D4C2683745B00A43DAB /* TextArea.swift */,
 				0445C680268EF53F0085D7A6 /* CustomTextFields.swift */,
 				0445C682268EFC340085D7A6 /* CustomSecureTextField.swift */,
+				046143B226903FC900FD19F9 /* ImagePicker.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				04D56385267F504C00432B70 /* MainTabView.swift in Sources */,
 				04303D4D2683745B00A43DAB /* TextArea.swift in Sources */,
 				04303D4626835B2600A43DAB /* FilterButtonView.swift in Sources */,
+				046143B326903FC900FD19F9 /* ImagePicker.swift in Sources */,
 				0468E18526789D5300C19EEF /* TwitterCloneApp.swift in Sources */,
 				040FC57A2684D40A00D8D88A /* SideMenuViewModel.swift in Sources */,
 				047054632684CE9E0008BECC /* SideMenuOptionView.swift in Sources */,
