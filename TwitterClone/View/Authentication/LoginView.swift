@@ -8,19 +8,23 @@
 import SwiftUI
 
 struct LoginView: View {
+    @EnvironmentObject var viewModel: AuthViewModel
+    
     @State var email = ""
     @State var password = ""
     
     var body: some View {
         NavigationView {
             ZStack {
+                Color(#colorLiteral(red: 0.1843137255, green: 0.631372549, blue: 0.9529411765, alpha: 1)).ignoresSafeArea()
+                
                 VStack {
                     Image("twitter")
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 220, height: 100)
-                        .padding(.top, 80)
-                        .padding(.bottom, 40)
+                        .frame(width: 180, height: 100)
+                        .padding(.top, 88)
+                        .padding(.bottom, 32)
                     
                     VStack(spacing: 20) {
                         CustomTextFields(text: $email, placeholder: Text("Email"), image: "envelope")
@@ -49,7 +53,7 @@ struct LoginView: View {
                         .padding(.trailing, 32)
                     }
                     
-                    Button(action: {}) {
+                    Button(action: {viewModel.login(withEmail: email, password: password)}) {
                         Text("Sign In")
                             .font(.headline)
                             .foregroundColor(.blue)
@@ -57,7 +61,8 @@ struct LoginView: View {
                             .background(Color.white)
                             .clipShape(Capsule())
                             .padding()
-                    }
+                    }.disabled(viewModel.isAuthenticating)
+                    
                     Spacer()
                     
                     NavigationLink(destination: RegistrationView().navigationBarBackButtonHidden(true)) {
@@ -68,11 +73,25 @@ struct LoginView: View {
                                 .font(.system(size: 14, weight: .semibold))
                         }
                         .foregroundColor(.white)
-                        .padding(.bottom, 40)
+                        .padding(.bottom, 20)
                     }
                 }
+                .overlay(
+                    VStack {
+                        Text("Loading...")
+                        SpinnerActivityIndicator(shouldAnimate: $viewModel.isAuthenticating, style: .large)
+                    }
+                    .frame(width: 100,
+                           height: 100)
+                    .background(BlurView(style: .systemMaterial))
+                    .foregroundColor(Color.primary)
+                    .cornerRadius(20)
+                    .opacity(viewModel.isAuthenticating ? 1 : 0)
+                )
+                
             }
-            .background(Color(#colorLiteral(red: 0.1843137255, green: 0.631372549, blue: 0.9529411765, alpha: 1))).ignoresSafeArea()
+            .showToast(viewModel.isError ?? "unable to login", isPresented: $viewModel.showError, color: Color.primary.opacity(0.5), duration: 2, alignment: .bottom, toastType: .offsetToast)
+            .navigationBarHidden(true)
         }
     }
 }

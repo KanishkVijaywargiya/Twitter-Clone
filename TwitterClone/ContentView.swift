@@ -8,28 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var viewModel: AuthViewModel
     @State var selectedIndex = 0
-    @State var animate: Bool = false
-    @State var showSplash: Bool = true
     
     var body: some View {
-        VStack {
-            ZStack {
-                // main tab view
-                ZStack {
-                    MainTabView(selectedIndex: $selectedIndex)
-                }
-                
-                // splash screen
-                SplashView(animate: $animate, showSplash: $showSplash)
-            }
-        }
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                animate.toggle()
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                showSplash.toggle()
+        Group {
+            if viewModel.userSession == nil {
+                LoginView()
+            } else {
+                MainTabView(selectedIndex: $selectedIndex)
             }
         }
     }

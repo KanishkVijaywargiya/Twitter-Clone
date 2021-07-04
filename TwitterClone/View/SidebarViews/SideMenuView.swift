@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SideMenuView: View {
     @Binding var isShowing: Bool
+    @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
         ZStack {
@@ -28,10 +29,9 @@ struct SideMenuView: View {
                     SidebarViews(image: "person", title: "Profile")
                 }
                 
-                SidebarViews(image: "arrow.left.square", title: "Logout")
-                    .onTapGesture {
-                        print("Logout user")
-                    }
+                Button(action: {viewModel.signOut()}) {
+                    SidebarViews(image: "arrow.left.square", title: "Logout")
+                }
                 
                 Spacer()
             }
